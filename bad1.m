@@ -4,8 +4,6 @@ close all;
 
 obj=VideoReader('bad12.mp4')
 
-image=read(obj,30);
-
 img=rgb2gray(read(obj,30));
 
 subplot(221)
@@ -17,7 +15,6 @@ th=im2bw(img,0.6);
 subplot(222)
 imshow(th);
 impixelinfo;
-
 
 mask=zeros(360,640);
 
@@ -31,19 +28,13 @@ subplot(223)
 imshow(mask);
 impixelinfo;
 
-
-
 el=strel('square',7);
-
 mor=imdilate(th,el);
+
 subplot(224)
 imshow(mor);
 impixelinfo;
 
-position =  [1 1];
-display=insertText(img,position,5);
-figure, imshow(image);
-impixelinfo;
 
 
 frames=get(obj,'NumberOfFrames');
@@ -51,8 +42,8 @@ frames=get(obj,'NumberOfFrames');
 rallies=0;
 k=1;
 
-
 while(k<=frames)
+    
     image=read(obj,k);
     
     img=rgb2gray(read(obj,k));
@@ -73,6 +64,7 @@ while(k<=frames)
         end
     end
     
+    
     if(count>100)
         rallies=rallies+1;
         k=k+5;
@@ -82,14 +74,9 @@ while(k<=frames)
 %     k
 %     rallies
     
-    k=k+1;
-    
-    position =  [1 1];
-    box_color = {'red','green','yellow'};
-    display=insertText(image,position,rallies,'FontSize',50);
-    imshow(display)
-
-            
+      k=k+1;
+          
 end
 
-    
+
+rallies
